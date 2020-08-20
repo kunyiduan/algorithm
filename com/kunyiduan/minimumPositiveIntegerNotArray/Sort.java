@@ -9,6 +9,7 @@ import java.util.Arrays;
  * @createTime 2020/08/20 09:39:00
  */
 public class Sort {
+
     private int[] param;
 
     public Sort(int[] param) {
@@ -19,6 +20,9 @@ public class Sort {
         this.param = param;
     }
 
+    /**
+     * 采用分治法递归排序
+     */
     private void quickSort(int[] arr, int startIndex, int endIndex) {
         if (startIndex > endIndex) {
             return;
@@ -28,6 +32,9 @@ public class Sort {
         quickSort(arr, pivotIndex + 1, endIndex);
     }
 
+    /**
+     * 获取基准值
+     */
     private int partition(int[] arr, int startIndex, int endIndex) {
         int pivot = arr[startIndex];
         int mark = startIndex;
@@ -44,6 +51,9 @@ public class Sort {
         return mark;
     }
 
+    /**
+     * 返回排序完成后的有序数组
+     */
     public int[] getResult() {
         quickSort(param, 0, param.length - 1);
         return param;

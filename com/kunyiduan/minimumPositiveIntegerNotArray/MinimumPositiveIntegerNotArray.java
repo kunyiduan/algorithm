@@ -2,6 +2,9 @@ package com.kunyiduan.minimumPositiveIntegerNotArray;
 
 public class MinimumPositiveIntegerNotArray {
 
+    /**
+     * 获取最小正整数
+     */
     private int getMinimumPositiveInteger(int[] arr) {
         if (arr[0] <= 0 || (arr[0] > 0 && arr[0] != 1)) {
             return 1;
@@ -15,6 +18,9 @@ public class MinimumPositiveIntegerNotArray {
         }
     }
 
+    /**
+     * 当数组非连续递增时，获取停止递增时的元素的位置
+     */
     private int getPosition(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             if (!(arr[i] - arr[i - 1] == 0 || arr[i] - arr[i - 1] == 1)) {
