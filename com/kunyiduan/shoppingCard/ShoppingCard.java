@@ -3,11 +3,12 @@ package com.kunyiduan.shoppingCard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author achilles
  * @version 1.0.0
- * @Description TODO
+ * @Description 类似于0-1背包问题
  * @createTime 2020/08/21 14:19:00
  */
 public class ShoppingCard {
@@ -22,13 +23,14 @@ public class ShoppingCard {
 
         //goods row : 价格 重要度 category
         List<Goods> goodsList = new ArrayList<>(10);
-        int id = 1;//商品编号，所在数据行-1
-        while (sc.hasNext()){
+        //商品编号=所在数据行-1
+        int id = 1;
+        while (id <= count){
             String goodsStr = sc.nextLine();
             String[] goodsPropertyArr = goodsStr.split(" ");
-            int price = Integer.valueOf(goodsPropertyArr[0]);
-            int importance = Integer.valueOf(goodsPropertyArr[1]);
-            int category = Integer.valueOf(goodsPropertyArr[2]);
+            int price = Integer.parseInt(goodsPropertyArr[0]);
+            int importance = Integer.parseInt(goodsPropertyArr[1]);
+            int category = Integer.parseInt(goodsPropertyArr[2]);
             Goods goods = new Goods();
             goods.setId(id);
             goods.setPrice(price);
@@ -38,6 +40,12 @@ public class ShoppingCard {
             id++;
         }
 
+        BackPackage backPackage = new BackPackage();
+        int[][] ints = backPackage.originalMax(goodsList, money);
+        System.out.println(ints[goodsList.size()+1][money]);
 
     }
+
+
+
 }
